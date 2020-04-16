@@ -18,24 +18,31 @@ class _SearchBarState extends State<SearchBar> {
           shape: new RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(200))),
       child: Center(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-        Container(
-          margin: EdgeInsets.only(right: 10),
-          child: Icon(
-          Icons.search,
-          color: Colors.black87,
-          size: 24.0,
-          semanticLabel: 'Text to announce search input',
-        )),
-        Text("Search...",
-            style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w600,
-                color: Colors.black26))
-      ])),
+          child: Row(crossAxisAlignment: CrossAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+            Container(
+                margin: EdgeInsets.only(right: 10),
+                child: Icon(
+                  Icons.search,
+                  color: Colors.black87,
+                  size: 24.0,
+                  semanticLabel: 'Text to announce search input',
+                )),
+            Text("Search...",
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black26))
+            // Container(
+            //   child: TextField(
+            //       decoration: InputDecoration(labelText: "Search..."),
+            //       style: TextStyle(
+            //           fontSize: 16.0,
+            //           fontWeight: FontWeight.w600,
+            //           color: Colors.black26))
+            // )
+          ])),
     );
   }
 }

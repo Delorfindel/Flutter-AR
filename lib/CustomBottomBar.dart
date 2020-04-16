@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:icon_shadow/icon_shadow.dart';
-import 'package:myapp/PlayButton.dart';
+import 'PlayButton.dart';
 
 class CustomBottomBar extends StatefulWidget {
   final scroll;

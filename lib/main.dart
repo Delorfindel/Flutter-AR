@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/CameraRoute.dart';
+import 'CameraRoute.dart';
 import "Pager.dart";
 
 void main() => runApp(MyApp());
