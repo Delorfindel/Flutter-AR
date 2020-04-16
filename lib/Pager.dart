@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/CatalogRoute.dart';
+
 import "CustomBottomBar.dart";
 
 class Pager extends StatefulWidget {
@@ -14,31 +15,6 @@ class _PagerState extends State<Pager> {
   int index;
   double _scroll;
   int _previousPage;
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController(
-      initialPage: 0,
-    )..addListener(_onScroll);
-    index = 0;
-    _scroll = 0;
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
-  void _onScroll() {
-    if (_pageController.page.toInt() == _pageController.page) {
-      _previousPage = _pageController.page.toInt();
-    }
-    setState(() {
-      _scroll = _pageController.page;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,5 +51,30 @@ class _PagerState extends State<Pager> {
       ),
       Align(alignment: Alignment.bottomCenter, child: CustomBottomBar(scroll: _scroll, pageController: _pageController))
     ]));
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(
+      initialPage: 0,
+    )..addListener(_onScroll);
+    index = 0;
+    _scroll = 0;
+  }
+
+  void _onScroll() {
+    if (_pageController.page.toInt() == _pageController.page) {
+      _previousPage = _pageController.page.toInt();
+    }
+    setState(() {
+      _scroll = _pageController.page;
+    });
   }
 }
