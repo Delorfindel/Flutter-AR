@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:myapp/PlayButton.dart';
 
@@ -80,26 +82,53 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                                   semanticLabel:
                                       'Text to announce search input',
                                 )),
-                            Text("Search",
-                                style: TextStyle(
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: getColorLerp(
-                                      0, widget.pageController.page),
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 10.0,
-                                      color: Colors.black45,
-                                      offset: Offset(0, 0),
-                                    ),
-                                  ],
-                                )),
+                            Container(
+                                margin: EdgeInsets.only(bottom: 10),
+                                child: Text(
+                                    "Search ${widget.scroll.toString().substring(0, 3)}",
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                      shadows: [
+                                        Shadow(
+                                          blurRadius: 10.0,
+                                          color: Colors.black45,
+                                          offset: Offset(0, 0),
+                                        ),
+                                      ],
+                                    ))),
                             SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: Container(
-                                color: Colors.deepOrange,
-                              ))
+                                width: 50,
+                                height: 5,
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                          child: AnimatedContainer(
+                                        duration: Duration(seconds: 0),
+                                        width: widget.scroll <= 1
+                                            ? lerpDouble(50, 0, widget.scroll)
+                                            : 0,
+                                        height: 5,
+                                        // margin: EdgeInsets.only(bottom: 10),
+                                        decoration: BoxDecoration(
+                                          color: widget.scroll <= 1
+                                              ? Color.lerp(Colors.white,
+                                                  Colors.white38, widget.scroll)
+                                              : Colors.white38,
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 10.0,
+                                              color: Colors.black45,
+                                              offset: Offset(0, 0),
+                                            )
+                                          ],
+                                        ),
+                                      ))
+                                    ]))
                           ]))),
               Spacer(),
               PlayButton(
@@ -127,20 +156,52 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                                   semanticLabel:
                                       'Text to announce search input',
                                 )),
-                            Text("Settings",
-                                style: TextStyle(
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: getColorLerp(
-                                      2, widget.pageController.page),
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 10.0,
-                                      color: Colors.black45,
-                                      offset: Offset(0, 0),
-                                    ),
-                                  ],
-                                ))
+                            Container(
+                                margin: EdgeInsets.only(bottom: 10),
+                                child: Text("Settings",
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                      shadows: [
+                                        Shadow(
+                                          blurRadius: 10.0,
+                                          color: Colors.black45,
+                                          offset: Offset(0, 0),
+                                        ),
+                                      ],
+                                    ))),
+                            SizedBox(
+                                width: 50,
+                                height: 5,
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                          child: AnimatedContainer(
+                                        duration: Duration(seconds: 0),
+                                        width: widget.scroll >= 1
+                                            ? lerpDouble(0, 50, widget.scroll - 1)
+                                            : 0,
+                                        height: 5,
+                                        // margin: EdgeInsets.only(bottom: 10),
+                                        decoration: BoxDecoration(
+                                          color: widget.scroll >= 1
+                                              ? Color.lerp(Colors.white38,
+                                                  Colors.white, widget.scroll)
+                                              : Colors.white38,
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 10.0,
+                                              color: Colors.black45,
+                                              offset: Offset(0, 0),
+                                            )
+                                          ],
+                                        ),
+                                      ))
+                                    ]))
                           ]))),
               Spacer()
             ])));
